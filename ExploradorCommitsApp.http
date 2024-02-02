@@ -1,0 +1,6 @@
+@ExploradorCommitsApp_HostAddress = http://localhost:5034
+
+GET {{ExploradorCommitsApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
