@@ -1,5 +1,6 @@
 ﻿using ExploradorCommitsApp.Models;
 using ExploradorCommitsApp.Services;
+using ExploradorCommitsApp.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -10,18 +11,18 @@ namespace ExploradorCommitsApp.Controllers
     [Route("CommitExplorer")]
     public class CommitExplorerController : ControllerBase
     {
-        private  CommitExplorerService _commitExplorerService;
+        readonly  IComitExplorerService  _commitExplorerService;
 
-        public CommitExplorerController(CommitExplorerService commitExplorerService)
+        public CommitExplorerController()
         {
-            _commitExplorerService = commitExplorerService;
+            _commitExplorerService = new CommitExplorerService();
         }
 
 
         [HttpGet("ObtenerDatosDesdeGithub")]
-        public async Task<IActionResult> ObtenerDatosDesdeGithub()
+        public async Task<IActionResult> ObtenerDatosDesdeGithub([FromQuery] string libreria)
         {
-            var result = await _commitExplorerService.CommitsPorSemana();
+            var result = await _commitExplorerService.CommitsPorSemana(libreria);
             return result;
         }
     }

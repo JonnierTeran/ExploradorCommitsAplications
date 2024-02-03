@@ -1,88 +1,90 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ExploradorCommitsApp.Models
 {
     public class ItemModels
     {
-        public int Id { get; set; }
-        public string? NodeId { get; set; }
-        public string? Name { get; set; }
-        public string? FullName { get; set; }
-        public bool  Private { get; set; }
-        public Owner    Owner { get; set; }
-        public string? HtmlUrl { get; set; }
-        public string? Description { get; set; }
-        public bool  Fork { get; set; }
-        public string? Url { get; set; }
-        public string? ForksUrl { get; set; }
-        public string? KeysUrl { get; set; }
-        public string? CollaboratorsUrl { get; set; }
-        public string? TeamsUrl { get; set; }
-        public string? HooksUrl { get; set; }
-        public string? IssueEventsUrl { get; set; }
-        public string? EventsUrl { get; set; }
-        public string? AssigneesUrl { get; set; }
-        public string? BranchesUrl { get; set; }
-        public string? TagsUrl { get; set; }
-        public string? BlobsUrl { get; set; }
-        public string? GitTagsUrl { get; set; }
-        public string? GitRefsUrl { get; set; }
-        public string? TreesUrl { get; set; }
-        public string? StatusesUrl { get; set; }
-        public string? LanguagesUrl { get; set; }
-        public string? StargazersUrl { get; set; }
-        public string?  ContributorsUrl { get; set; }
-        public string? SubscribersUrl { get; set; }
-        public string? SubscriptionUrl { get; set; }
-        public string? CommitsUrl { get; set; }
-        public string? GitCommitsUrl { get; set; }
-        public string? CommentsUrl { get; set; }
-        public string? IssueCommentUrl { get; set; }
-        public string? ContentsUrl { get; set; }
-        public string? CompareUrl { get; set; }
-        public string? MergesUrl { get; set; }
-        public string? ArchiveUrl { get; set; }
-        public string? DownloadsUrl { get; set; }
-        public string? IssuesUrl { get; set; }
-        public string? PullsUrl { get; set; }
-        public string? MilestonesUrl { get; set; }
-        public string? NotificationsUrl { get; set; }
-        public string? LabelsUrl { get; set; }
-        public string? ReleasesUrl { get; set; }
-        public string? DeploymentsUrl { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public DateTime PushedAt { get; set; }
-        public string? GitUrl { get; set; }
-        public string? SshUrl { get; set; }
-        public string? CloneUrl { get; set; }
-        public string?   SvnUrl { get; set; }
-        public string? Homepage { get; set; }
-        public int Size { get; set; }
-        public int StargazersCount { get; set; }
-        public int WatchersCount { get; set; }
-        public string? Language { get; set; }
-        public bool HasIssues { get; set; }
-        public bool HasProjects { get; set; }
-        public bool HasDownloads { get; set; }
-        public bool HasWiki { get; set; }
-        public bool HasPages { get; set; }
-        public bool HasDiscussions { get; set; }
-        public int ForksCount { get; set; }
-        public object? MirrorUrl { get; set; }
-        public bool Archived { get; set; }
-        public bool Disabled { get; set; }
-        public int OpenIssuesCount { get; set; }
-        public LicenceModels License { get; set; }
-        public bool AllowForking { get; set; }
-        public bool IsTemplate { get; set; }
-        public bool WebCommitSignoffRequired { get; set; }
-        public List<string>? Topics { get; set; }
-        public string? Visibility { get; set; }
-        public int Forks { get; set; }
-        public int OpenIssues { get; set; }
-        public int Watchers { get; set; }
-        public string? DefaultBranch { get; set; }
-        public double Score { get; set; }
+        public int id { get; set; } = int.MaxValue;
+        public string node_id { get; set; } = string.Empty;
+        public string name { get; set; } = string.Empty;
+        public string full_name { get; set; } = string.Empty;
+        public bool @private { get; set; }
+        public OwnerModels owner { get; set; } = new OwnerModels();
+        public string html_url { get; set; } = string.Empty;
+        public string description { get; set; } = string.Empty;
+        public bool fork { get; set; }
+        public string url { get; set; } = string.Empty;
+        public string forks_url { get; set; } = string.Empty;
+        public string keys_url { get; set; } = string.Empty;
+        public string collaborators_url { get; set; } = string.Empty;
+        public string teams_url { get; set; } = string.Empty;
+        public string hooks_url { get; set; } = string.Empty;
+        public string issue_events_url { get; set; } = string.Empty;
+        public string events_url { get; set; } = string.Empty;
+        public string assignees_url { get; set; } = string.Empty;
+        public string branches_url { get; set; } = string.Empty;
+        public string tags_url { get; set; } = string.Empty;
+        public string blobs_url { get; set; } = string.Empty;
+        public string git_tags_url { get; set; } = string.Empty;
+        public string git_refs_url { get; set; } = string.Empty;
+        public string trees_url { get; set; } = string.Empty;
+        public string statuses_url { get; set; } = string.Empty;
+        public string languages_url { get; set; } = string.Empty;
+        public string stargazers_url { get; set; } = string.Empty;
+        public string contributors_url { get; set; } = string.Empty;
+        public string subscribers_url { get; set; } = string.Empty;
+        public string subscription_url { get; set; } = string.Empty;
+        public string commits_url { get; set; } = string.Empty;
+        public string git_commits_url { get; set; } = string.Empty;
+        public string comments_url { get; set; } = string.Empty;
+        public string issue_comment_url { get; set; } = string.Empty;
+        public string contents_url { get; set; } = string.Empty;
+        public string compare_url { get; set; } = string.Empty;
+        public string merges_url { get; set; } = string.Empty;
+        public string archive_url { get; set; } = string.Empty;
+        public string downloads_url { get; set; } = string.Empty;
+        public string issues_url { get; set; } = string.Empty;
+        public string pulls_url { get; set; } = string.Empty;
+        public string milestones_url { get; set; } = string.Empty;
+        public string notifications_url { get; set; } = string.Empty;
+        public string labels_url { get; set; } = string.Empty;
+        public string releases_url { get; set; } = string.Empty;
+        public string deployments_url { get; set; } = string.Empty;
+        public DateTime created_at { get; set; }
+        public DateTime updated_at { get; set; }
+        public DateTime pushed_at { get; set; }
+        public string git_url { get; set; } = string.Empty;
+        public string ssh_url { get; set; } = string.Empty;
+        public string clone_url { get; set; } = string.Empty;
+        public string svn_url { get; set; } = string.Empty;
+        public string homepage { get; set; } = string.Empty;
+        public int size { get; set; }
+        public int stargazers_count { get; set; }
+        public int watchers_count { get; set; }
+        public string language { get; set; } = string.Empty;
+        public bool has_issues { get; set; }
+        public bool has_projects { get; set; }
+        public bool has_downloads { get; set; }
+        public bool has_wiki { get; set; }
+        public bool has_pages { get; set; }
+        public bool has_discussions { get; set; }
+        public int forks_count { get; set; }
+        public object? mirror_url { get; set; }
+        public bool archived { get; set; }
+        public bool disabled { get; set; }
+        public int open_issues_count { get; set; }
+        public LicenceModels license { get; set; } = new LicenceModels();
+        public bool allow_forking { get; set; }
+        public bool is_template { get; set; }
+        public bool web_commit_signoff_required { get; set; }
+        public string[]? topics { get; set; }
+        public string visibility { get; set; } = string.Empty;
+        public int forks { get; set; }
+        public int open_issues { get; set; }
+        public int watchers { get; set; }
+        public string default_branch { get; set; } = string.Empty;      
+        public double score { get; set; } = double.MaxValue;
     }
 }

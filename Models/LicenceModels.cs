@@ -2,10 +2,10 @@
 {
     public class LicenceModels
     {
-        public string Key { get; set; }
-        public string Name { get; set; }
-        public string SpdxId { get; set; }
-        public string Url { get; set; }
-        public string NodeId { get; set; }
+        public string key { get; set; } = string.Empty;
+        public string name { get; set; } = string.Empty;
+        public string spdx_id { get; set; } = string.Empty;
+        public string url { get; set; } = string.Empty;
+        public string node_id { get; set; } = string.Empty;
     }
 }

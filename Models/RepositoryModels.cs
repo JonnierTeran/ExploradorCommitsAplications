@@ -2,8 +2,8 @@
 {
     public class RepositoryModels
     {
-        public int TotalCount { get; set; }
-        public bool IncompleteResults { get; set; }
-        public List<ItemModels> Items { get; set; }
+        public int total_count { get; set; }
+        public bool incomplete_results { get; set; }
+        public List<ItemModels> items { get; set; } = new List<ItemModels>();
     }
 }
