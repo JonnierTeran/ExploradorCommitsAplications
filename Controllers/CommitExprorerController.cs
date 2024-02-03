@@ -1,21 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ExploradorCommitsApp.Models;
+using ExploradorCommitsApp.Services;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+
 
 namespace ExploradorCommitsApp.Controllers
 {
-
-    [ApiController] //indica que es un controlador api
-    [Route("CommitExplorer")] // Ruta del controlador
-    public class CommitExprorerController : ControllerBase //Indicar que es un controlador
+    [ApiController]
+    [Route("CommitExplorer")]
+    public class CommitExplorerController : ControllerBase
     {
-        
-        [HttpGet]
-        [Route("Prueba")]
-        public dynamic Ejemplo() 
+        private  CommitExplorerService _commitExplorerService;
+
+        public CommitExplorerController(CommitExplorerService commitExplorerService)
         {
-            return new 
-            { 
-                message = "Commit Explorer Aplications"
-            };
+            _commitExplorerService = commitExplorerService;
+        }
+
+
+        [HttpGet("ObtenerDatosDesdeGithub")]
+        public async Task<IActionResult> ObtenerDatosDesdeGithub()
+        {
+            var result = await _commitExplorerService.CommitsPorSemana();
+            return result;
         }
     }
 }

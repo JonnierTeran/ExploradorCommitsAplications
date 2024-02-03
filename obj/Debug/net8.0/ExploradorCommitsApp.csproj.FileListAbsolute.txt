@@ -31,3 +31,4 @@ C:\Users\Usuario\Desktop\ExploradorCommitsApp\ExploradorCommitsApp\obj\Debug\net
 C:\Users\Usuario\Desktop\ExploradorCommitsApp\ExploradorCommitsApp\obj\Debug\net8.0\ExploradorCommitsApp.genruntimeconfig.cache
 C:\Users\Usuario\Desktop\ExploradorCommitsApp\ExploradorCommitsApp\obj\Debug\net8.0\ref\ExploradorCommitsApp.dll
 C:\Users\Usuario\Desktop\ExploradorCommitsApp\ExploradorCommitsApp\obj\Debug\net8.0\ExploradorCommitsApp.sourcelink.json
+C:\Users\Usuario\Desktop\ExploradorCommitsApp\ExploradorCommitsApp\bin\Debug\net8.0\Newtonsoft.Json.dll
