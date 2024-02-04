@@ -4,6 +4,10 @@ using System.ComponentModel;
 
 namespace ExploradorCommitsApp.Models
 {
+
+    /// <summary>
+    /// Modelo para Mappear Cada propiedd Itemm De Un Repositorio
+    /// </summary>
     public class ItemModels
     {
         public int id { get; set; } = int.MaxValue;

@@ -1,5 +1,8 @@
 ﻿namespace ExploradorCommitsApp.Models
 {
+    /// <summary>
+    /// Modelo utilizado para Enviar como Respuesta al Llamado del API
+    /// </summary>
     public class ResponseCommits
     {
         /// <summary>

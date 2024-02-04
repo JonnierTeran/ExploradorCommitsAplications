@@ -1,5 +1,9 @@
 ﻿namespace ExploradorCommitsApp.Models
 {
+
+    /// <summary>
+    /// Modelo para Mappear Cada Licencia de Un Repositorio
+    /// </summary>
     public class LicenceModels
     {
         public string key { get; set; } = string.Empty;

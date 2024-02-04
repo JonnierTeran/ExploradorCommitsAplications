@@ -1,5 +1,8 @@
 ﻿namespace ExploradorCommitsApp.Models
 {
+    /// <summary>
+    /// Modelo para Maappear Un Owner de cada Repositorio
+    /// </summary>
     public class OwnerModels
     {
         public string login { get; set; } = string.Empty;
