@@ -63,8 +63,7 @@ namespace ExploradorCommitsApp.Services
 
             try
             {
-                string apiUrl = $"https://api.github.com/search/repositories?q={data.libreria}&per_page=2";
-                HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
+                string apiUrl = $"https://api.github.com/search/repositories?q={data.libreria}&per_page={data.CantidadRepo}";            HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -74,17 +73,20 @@ namespace ExploradorCommitsApp.Services
                     // Deserializa la cadena JSON en un objeto countCommitsModels
                     var responseObject = JsonConvert.DeserializeObject<RepositoryModels>(responseBody);
 
+                    //Valida que el Objeto no sea null
+                    if (responseObject != null)
+                    {
+                        return responseObject; //Retorna el Objeto
+                    }
+                    else
+                    {
+                        return new RepositoryModels(); // Retorna un objeto vacido
+                    }
                     
-                    // Devuelve un OkObjectResult con el objeto deserializado
-                    return responseObject;
                 }
                 else
                 {
-                    // Si la solicitud no es exitosa, devuelve un ObjectResult con un mensaje de error y el código de estado
-                    //return new ObjectResult("Error al obtener datos desde GitHub")
-                    //{
-                    //    StatusCode = (int)response.StatusCode
-                    //};
+                    
 
                     return new RepositoryModels();
 
@@ -101,7 +103,7 @@ namespace ExploradorCommitsApp.Services
         //-------------------------------------------------------------------------------------------------------------------------------------------
         private  async Task<ResponseCommitUnit> CommitsPorSemana2(string fullName)
         {
-            var response2 = new ResponseCommitUnit();
+            var responseFinal = new ResponseCommitUnit();
             try
             {
 
@@ -116,24 +118,24 @@ namespace ExploradorCommitsApp.Services
                     // Deserializa la cadena JSON en un objeto countCommitsModels
                     var responseObject = JsonConvert.DeserializeObject<countCommitsModels>(responseBody);
 
-                    // Devuelve un OkObjectResult con el objeto deserializado
-                    response2.Data = responseObject;
-                    return response2;
+                    // Devuelve un  con el objeto deserializado
+                    responseFinal.Data = responseObject;
+                    return responseFinal;
                 }
                 else
                 {
-                    response2.MessageError = "No hay data para mostrar";
-                    response2.Data = null;
-                    return response2;
+                    responseFinal.MessageError = "No hay data para mostrar";
+                    responseFinal.Data = null;
+                    return responseFinal;
 
                 }
             }
             catch (Exception ex)
             {
 
-                response2.MessageError = ex.Message;
-                response2.Data = null;
-                return response2;
+                responseFinal.MessageError = ex.Message;
+                responseFinal.Data = null;
+                return responseFinal;
 
             }
 
