@@ -1,0 +1,30 @@
+# Carpeta y archivos generados por la compilación de .NET
+bin/
+obj/
+
+# Carpeta y archivos específicos de Visual Studio
+.vscode/
+*.suo
+*.user
+*.sln.docstates
+*.userprefs
+*.log
+
+# Carpeta y archivos específicos de Rider (opcional, si usas JetBrains Rider)
+.idea/
+*.sln.iml
+
+# Archivos de configuración específicos del usuario
+*.suo
+*.user
+*.userprefs
+
+# Archivos de respaldo de Visual Studio
+*.[Bb]ak
+
+# Carpeta de paquetes de NuGet
+packages/
+*.nupkg
+
+# Archivos de registro
+*.log
