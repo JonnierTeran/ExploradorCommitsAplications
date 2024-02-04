@@ -19,10 +19,10 @@ namespace ExploradorCommitsApp.Controllers
         }
 
 
-        [HttpGet("ObtenerDatosDesdeGithub")]
-        public async Task<IActionResult> ObtenerDatosDesdeGithub([FromQuery] string libreria)
+        [HttpPost("ObtenerDatosDesdeGithub")]
+        public async Task<IActionResult> ObtenerDatosDesdeGithub(RequestCommits request)
         {
-            var result = await _commitExplorerService.CommitsPorSemana(libreria);
+            var result = await _commitExplorerService.CommitsPorSemana(request);
             return result;
         }
     }

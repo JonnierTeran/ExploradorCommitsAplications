@@ -13,18 +13,57 @@ namespace ExploradorCommitsApp.Services
         public CommitExplorerService()
         {
             _httpClient = new HttpClient();
+           
             _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("TuApp"); // Agrega un encabezado User-Agent con el valor "TuApp"
         }
 
+        
+        
+        #region Metodos publicos
 
+        /// <summary>
+        /// Método para calcular commits por semana Segun el Dueño y Repositorio que se busque
+        /// </summary>
+        /// <param name="data"> Libreria y Semanas</param>
+        /// <returns> Lista de los commits</returns>
+        public async Task<IActionResult> CommitsPorSemana(RequestCommits data)
+        {
+            List<ResponseCommits> responseData = new List<ResponseCommits>();
+            var Repo = await this.CommitsPorLibreria(data);
+
+            if (Repo != null)
+            {
+                if (Repo.items.Count > 0)
+                {
+                    for (int i = 0; i < Repo.items.Count; i++)
+                    {
+                        ResponseCommits auxData = new ResponseCommits();
+                        var full_name = Repo.items[i].full_name;
+                        var da = await this.CommitsPorSemana2(full_name);
+                        auxData.infoRepo = da.Data;
+                        auxData.nameRepo = full_name;
+                        responseData.Add(auxData);
+                    }
+
+                }
+            }
+
+            return new OkObjectResult(responseData);
+
+
+        }
+        #endregion
+
+
+        #region Métodos privados
         // Método para consultar los repositorios por libreria
-        public async Task<RepositoryModels> CommitsPorLibreria(string library)
+        private async Task<RepositoryModels> CommitsPorLibreria(RequestCommits data)
         {
 
 
             try
             {
-                string apiUrl = $"https://api.github.com/search/repositories?q={library}&per_page=2";
+                string apiUrl = $"https://api.github.com/search/repositories?q={data.libreria}&per_page=2";
                 HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
 
                 if (response.IsSuccessStatusCode)
@@ -35,7 +74,7 @@ namespace ExploradorCommitsApp.Services
                     // Deserializa la cadena JSON en un objeto countCommitsModels
                     var responseObject = JsonConvert.DeserializeObject<RepositoryModels>(responseBody);
 
-
+                    
                     // Devuelve un OkObjectResult con el objeto deserializado
                     return responseObject;
                 }
@@ -60,36 +99,6 @@ namespace ExploradorCommitsApp.Services
         }
 
         //-------------------------------------------------------------------------------------------------------------------------------------------
-
-        // Método para calcular commits por semana Segun el Dueño y Repositorio que se busque
-        public async Task<IActionResult> CommitsPorSemana(string library)
-        {
-            List<ResponseCommits> responseData = new List<ResponseCommits>();
-            var Repo = await this.CommitsPorLibreria(library);
-
-            if (Repo != null)
-            {
-                if (Repo.items.Count > 0)
-                {
-                    for (int i = 0; i < Repo.items.Count; i++)
-                    {
-                        ResponseCommits auxData = new ResponseCommits();
-                        var full_name = Repo.items[i].full_name;
-                        var da = await this.CommitsPorSemana2(full_name);
-                        auxData.infoRepo= da.Data;
-                        auxData.nameRepo = full_name;
-                        responseData.Add(auxData);
-                    }
-                
-                }
-            }
-
-            return new OkObjectResult(responseData);
-
-
-        }
-
-
         private  async Task<ResponseCommitUnit> CommitsPorSemana2(string fullName)
         {
             var response2 = new ResponseCommitUnit();
@@ -130,5 +139,7 @@ namespace ExploradorCommitsApp.Services
 
 
         }
+
+        #endregion
     }
 }
