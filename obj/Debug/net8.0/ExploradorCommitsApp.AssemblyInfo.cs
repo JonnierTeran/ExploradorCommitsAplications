@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExploradorCommitsApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5fbd6f1904e2fdffc5770d57c6cfd4abd3b3f1f3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16ad94561674406fb85092fffbc26886689be5b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExploradorCommitsApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExploradorCommitsApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
